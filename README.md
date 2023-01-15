@@ -13,6 +13,8 @@ Creating a documentation for all the tools I've used across different platforms
 
 ssh-keygen -t rsa -b 4096 -C "[YOUR EMAIL]"
 
+
+
 # STEP 2
 # Start a new instance of the ssh-agent program and set the apporpriate environment variables
 # for the current shell session. "-s " option is to run it in "silent" mode, which causes it to
@@ -22,9 +24,13 @@ ssh-keygen -t rsa -b 4096 -C "[YOUR EMAIL]"
 eval "$(ssh-agent -s)"
 # it gives like {{agent_id : 15800}}
 
+
+
 # STEP 3
 # add SSH Private key to ssh-agent
 ssh-add ~/.ssh/[YOUR SSH_ID FOLDER]
+
+
 
 # STEP 4
 # LAST STEP (Important)
@@ -32,6 +38,8 @@ ssh-add ~/.ssh/[YOUR SSH_ID FOLDER]
 # this directory on your computer {{~/.ssh/[YOUR SSH_ID FOLDER]}}
 # Open this file and copy your .pub (public) key.
 # Now for Testing SSH Connection.
+
+
 
 # STEP 5 (Opional)
 ssh -T git@github.com
