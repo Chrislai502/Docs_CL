@@ -96,12 +96,9 @@ sudo teamviewer info
 	# OR
 	
 	sudo kill -9 process_ID
-	
+    ```
+
 	# The difference:
-	kill -9 sends a signal called SIGKILL to the process with the specified process ID, which
-	immediately terminates the process. pkill -u is used to kill all processes running under a
-	specific user with the specified process ID. The -9 option is not required when using pkill.
-	Additionally, pkill allows for more flexibility in selecting processes to be terminated, such as
-	by name, terminal, or other criteria.
-	```
+	kill -9 sends a signal called SIGKILL to the process with the specified process ID, which immediately terminates the process. pkill -u is used to kill all processes running under a specific user with the specified process ID. The -9 option is not required when using pkill. Additionally, pkill allows for more flexibility in selecting processes to be terminated, such as by name, terminal, or other criteria.
+
 	
