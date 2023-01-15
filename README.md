@@ -6,34 +6,26 @@ Creating a documentation for all the tools I've used across different platforms
 - SSH access setup for your local repository
 - Reference link [here](https://medium.com/hackernoon/step-by-step-guide-to-push-your-first-project-on-github-fec1dce574f)
 
+
+1. IMPORTANT: After running the line of code below, you don't use the default "home/roar/.ssh/id_rsa". Use your name as a path_id to prevent others from overwriting eg.: "home/roar/.ssh/chris_id_rsa"
 ```
-** STEP 1 **
-# IMPORTANT: After running the line of code below, you don't use the default "home/roar/.ssh/id_rsa"
-# use your name as a path_id to prevent others from overwriting eg.: "home/roar/.ssh/chris_id_rsa"
-
 ssh-keygen -t rsa -b 4096 -C "[YOUR EMAIL]"
-
-** STEP 2 **
-# Start a new instance of the ssh-agent program and set the apporpriate environment variables
-# for the current shell session. "-s " option is to run it in "silent" mode, which causes it to
-# print the commands needed to set the environment variables to standard output, rather than 
-# executing them directly. The `eval` command runs the commands printed by the ssh-agent.  
-
+```
+2. Start a new instance of the ssh-agent program and set the apporpriate environment variables for the current shell session. "-s " option is to run it in "silent" mode, which causes it to print the commands needed to set the environment variables to standard output, rather than executing them directly. The `eval` command runs the commands printed by the ssh-agent.  
+```
 eval "$(ssh-agent -s)"
 # it gives like {{agent_id : 15800}}
+```
 
-** STEP 3 **
-# add SSH Private key to ssh-agent
+3. Add SSH Private key to ssh-agent
+```
 ssh-add ~/.ssh/[YOUR SSH_ID FOLDER]
+```
 
-** STEP 4 **
-# LAST STEP (Important)
-# Now goto github.com ➢➢ Under Profile Photo (Drop Down) ➢➢ Settings ➢➢ Use SideBar {{ SSH & GPG Keys }} ➢➢ Then go to 
-# this directory on your computer {{~/.ssh/[YOUR SSH_ID FOLDER]}}
-# Open this file and copy your .pub (public) key.
-# Now for Testing SSH Connection.
+4. LAST STEP (Important) Now goto github.com ➢➢ Under Profile Photo (Drop Down) ➢➢ Settings ➢➢ Use SideBar {{ SSH & GPG Keys }} ➢➢ Then go to this directory on your computer {{~/.ssh/[YOUR SSH_ID FOLDER]}}. Open this file and copy your .pub (public) key.
 
-** STEP 5 **(Opional)
+5. Now for Testing SSH Connection.
+```
 ssh -T git@github.com
 # Hi {{ USERNAME }}! You've successfully authenticated but github does not provide shell access.
 ```
