@@ -8,8 +8,8 @@ Creating a documentation for all the tools I've used across different platforms
 
 
 ## Github
-- SSH access setup for your local repository
-- Reference link [here](https://medium.com/hackernoon/step-by-step-guide-to-push-your-first-project-on-github-fec1dce574f)
+SSH access setup for your local repository
+Reference link [here](https://medium.com/hackernoon/step-by-step-guide-to-push-your-first-project-on-github-fec1dce574f)
 
 
 1. IMPORTANT: After running the line of code below, you don't use the default "home/roar/.ssh/id_rsa". Use your name as a path_id to prevent others from overwriting eg.: "home/roar/.ssh/chris_id_rsa"
