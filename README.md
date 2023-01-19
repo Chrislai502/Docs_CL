@@ -63,11 +63,12 @@ Setting up SSH access from one machine to another without needing to keep on typ
         User [USERNAME_IN_REMOTE]
         PreferredAuthentications publickey
         IdentityFile "~/.ssh/[YOUR_CHOICE]/[NAME_FOR_KEY]"
-
+    ```
 Now, you should be able to ssh into the machine without having to type the password every single time.
+
 This is what happens under the hood:
-    In the case of SSH authentication, when a client connects to the server and presents its public key, the server uses the public key to encrypt a random number, which is sent back to the client. If the client is able to decrypt the number, it proves that it has the corresponding private key, and that the public key presented to the server belongs to the client.
-    Computer Security: If the attacker intercepts the public key and the decrypted number, it is a random number, and it is only used for the current session, it will not be of any use to the attacker in the future. Hence, anyone listening to the network will have the public key, but no access eventually.
+- In the case of SSH authentication, when a client connects to the server and presents its public key, the server uses the public key to encrypt a random number, which is sent back to the client. If the client is able to decrypt the number, it proves that it has the corresponding private key, and that the public key presented to the server belongs to the client.
+- Computer Security: If the attacker intercepts the public key and the decrypted number, it is a random number, and it is only used for the current session, it will not be of any use to the attacker in the future. Hence, anyone listening to the network will have the public key, but no access eventually.
 
 
 
