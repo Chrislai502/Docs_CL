@@ -51,10 +51,10 @@ Setting up SSH access from one machine to another without needing to keep on typ
     ```
     ssh-copy-id -i [NAME_FOR_KEY].pub [USERNAME_IN_REMOTE]@[IP_OF_REMOTE_MACHINE]
     ```
-    The ssh-copy-id command is a shorthand for adding a public key to the authorized_keys file on a remote server. This directory is usually located in the .ssh directory in the user's home directory 
-    The -i option is used to specify the file containing the public key to be copied. In this case, it's "[NAME_FOR_KEY].pub"
-    The [USERNAME_IN_REMOTE]@[IP_OF_REMOTE_MACHINE] is the username and the remote hostname where you want to add the key.
-    The user running the command must have permission to log into the remote server as the specified user using a password.
+    - The ssh-copy-id command is a shorthand for adding a public key to the authorized_keys file on a remote server. This directory is usually located in the .ssh directory in the user's home directory. 
+    - The -i option is used to specify the file containing the public key to be copied. In this case, it's "[NAME_FOR_KEY].pub"
+    - The [USERNAME_IN_REMOTE]@[IP_OF_REMOTE_MACHINE] is the username and the remote hostname where you want to add the key.
+    - The user running the command must have permission to log into the remote server as the specified user using a password.
 
 3. Open VSCode select "Open SSH Configuration File" when using the ssh extension, select the `~/.ssh/config` option. Add the following into the file
     ```
