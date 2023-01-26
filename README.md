@@ -4,7 +4,7 @@ Creating a documentation for all the tools I've used across different platforms
 
 
 
-
+---
 
 
 ## Github
@@ -36,6 +36,7 @@ SSH access setup for your local repository. Reference link [here](https://medium
 
 If you run into issues like `ERROR: Permission to [GITHUB_USERNAME]/[GITHUB_REPO].git denied to [NOT YOU].`, redo steps 2 - 5 in your local github repository terminal shell
 
+---
 
 ## SSH Setup
 Setting up SSH access from one machine to another without needing to keep on typing passwords. Say your own machine is 'local', and the remote machine is 'remote'
@@ -70,7 +71,7 @@ This is what happens under the hood:
 - In the case of SSH authentication, when a client connects to the server and presents its public key, the server uses the public key to encrypt a random number, which is sent back to the client. If the client is able to decrypt the number, it proves that it has the corresponding private key, and that the public key presented to the server belongs to the client.
 - Computer Security: If the attacker intercepts the public key and the decrypted number, it is a random number, and it is only used for the current session, it will not be of any use to the attacker in the future. Hence, anyone listening to the network will have the public key, but no access eventually.
 
-
+---
 
 ## Ubuntu Operating System
 - To check if a package is installed,
@@ -79,7 +80,7 @@ dpkg -l [Package Name]
 ```
 
 
-
+---
 
 
 
@@ -94,7 +95,7 @@ ChatGPT inquiry link [here](https://chat.openai.com/chat/5eb88024-7e28-4815-9333
 - To download a list of files, open download.sh
 
 
-
+---
 
 
 
@@ -141,4 +142,208 @@ sudo teamviewer info
 	### The difference:
 	kill -9 sends a signal called SIGKILL to the process with the specified process ID, which immediately terminates the process. pkill -u is used to kill all processes running under a specific user with the specified process ID. The -9 option is not required when using pkill. Additionally, pkill allows for more flexibility in selecting processes to be terminated, such as by name, terminal, or other criteria.
 
-	
+---
+
+
+## CGDB
+1. First step, if you're using `make` to build, do:
+    ```
+    make CFLAGS=-g
+    ```
+    to create an file with binaries
+    If you're just building .c files, do 
+    ```
+    gcc -g [PROGRAM_NAME].C -o [PROGRAM_NAME]
+    ```
+
+2. Run:
+    ```
+    cgdb [PROGRAM_NAME] arg1 "arg2" ...
+
+    OR
+
+    gdb [PROGRAM_NAME] arg1 "arg2" ...
+    ```
+
+### **GDB/CGDB Cheatsheet:**
+### Basic Controls:
+
+| Command      | Shortcut (if any) |Description |
+| ----------- | ----------- | --- |
+| `run `      | r       | Start execution |
+| `kill` | Ctrl-c | Stops GDB execution (rerun with run) |
+| `continue` | c | Continue the code from where it is stopped |
+| `list` | list | | 
+|`quit` | Ctrl-d |  exit GDB |
+|`esc key + arrows`| | Switch to the code pane and navigate in the code panel |
+| `i key` | | Switch to the (gdb) command pane |
+| `help` || Lists all commands|
+
+<br>
+
+### Basic Debugging Features:
+
+| Command      | Shortcut (if any) |Description |
+| ----------- | ----------- | --- |
+| `break [LINE_NUMBER]` | `b ` |  Breakpoint at line # if there is only 1 file|
+| `step ` | `s` | Step into function|
+| `next`| `n` | Next, step over line by line|
+| `finish` || Have a function  finish executing and return to is's caller. Also shows what value the function returned. |
+| `print [VARIABLE]` | | Check variable values. The $## is simply a counter that keeps track of the variables you have examined|
+| `print [VARIABLE].[TAB_KEY]` | |to see the fields possible under the object.|
+| `set [ASSIGNMENT]` or `set var [ASSIGNMENT]` | |To set a certain variable to something Example: x = 3 |
+|`call [FUNCTION]()` | |for example, you might want to have the program to dump core: you call abort()|
+
+<br>
+
+### Stacktracing:
+| Command      | Shortcut (if any) |Description |
+| ----------- | ----------- | --- |
+| `backtrace` || Print out the frames: |
+    ```
+    (gdb) backtrace
+    #0  func2 (x=30) at test.c:5
+    #1  0x80483e6 in func1 (a=30) at test.c:10
+    #2  0x8048414 in main (argc=1, argv=0xbffffaf4) at test.c:19
+    #3  0x40037f5c in __libc_start_main () from /lib/libc.so.6
+    (gdb) 
+    ```
+In this example, we can see that we are currently inside func2(), which was called bu func1(), which was called from main(). If we use `frame 2`, we get the following: 
+```
+(gdb) frame 2
+#2  0x8048414 in main (argc=1, argv=0xbffffaf4) at test.c:19
+19        x = func1(x);
+(gdb) 
+```
+|       |  | |
+| ----------- | ----------- | --- |
+|`frame [FRAME_ID]`|| Print out ther current frame(?) unsure how to use it
+|`info frame`|| Displays informstion about the current stack frame.|
+| `info locals` | | Displays the list of local variables and their values for the current stack frame|
+| `info args` | | Displays the list of arguments|
+
+<br>
+
+### Breakpointing:
+| Command      | Shortcut (if any) |Description |
+| ----------- | ----------- | --- |
+| `break [LINE_NUMBER]` | `b ` |  Breakpoint at line # if there is only 1 file|
+|`break [FILENAME]:[LINE_NUMBER]`| `b` | Breakpoint if there are multiple files.|
+|`break [FUNCTION_NAME]`| `b` | Breakpoint on a C function|
+|`break TestClass::testFunc(int)`| `b`| Creating breakpoints for C++ functions| 
+| `tbreak` |  | Stops the program only once and is removed|
+| `info breakpoints` || Gives breakpoint info |
+```
+(gdb) info breakpoints
+Num Type           Disp Enb Address    What
+2   breakpoint     keep y   0x080483c3 in func2 at test.c:5
+3   breakpoint     keep y   0x080483da in func1 at test.c:10
+```
+| | | |
+| ----------- | ----------- | --- |
+|`disable [BREAKPOINT_ID]`| | disable that breakpoint|
+|`ignore [BREAKPOINT_ID] [NUM_CROSSINGS]`|| Ignore the next [NUM_CROSSINGS] times of breakpoint no. [BREAKPOINT_ID] |
+
+
+<br>
+
+### Watchpoints:
+Watchpoint are set on variables. When those variables are read or written, the watchpoint is triggered and the program execution stops.
+
+Important steps:
+1. Watchpoint needs the variable to be in the current scope. 
+2. To set a watchpoint on a non-global variable, you must have set a breakpoint that will stop your program when the variable is in scope. 
+3. Set the watchpoint after the program breaks
+
+Example usage for this code:
+```
+#include <stdio.h>
+
+int main(int argc, char **argv)
+{
+  int x = 30;
+  int y = 10;
+
+  x = y;
+
+  return 0;
+}
+```
+
+
+
+| Command      | Shortcut (if any) |Description | Notes |
+| ----------- | ----------- | --- | --- |
+| `watch [VARIABLE]` | | Set a write watchpoint| example use case to watch memory location: `watch *(int*)0x12345678`|
+| `rwatch [VARIABLE]` || Set a read watchpoint |
+| `awatch [VARIABLE]` || Set a read/watch watchpoint |
+| `info watchpoints`||See a list of all watchpoints that are set|
+|`info breakpoints`| |See list of all breakpoints and watchpoints|
+|`disable`| |To disable the watchpoint|
+|`delete [WATCHPOINT_ID]` || Delete that specific watchpoint|
+
+<br>
+
+### Examining Memory
+| Command      | Description |Example use|
+| ----------- | ---| ---|
+| `x/[FMT] [ADDRESS]`|Here, FMT is a count followed by a format letter and size letter. There are many options, use `help x` to see all. [ADDRESS] can be a symbol name, s.a. variable or memory address||
+```
+If we have char *s = "Hello World\n", some uses of the x command could be:
+
+Examine the variable as a string:
+
+
+(gdb) x/s s
+0x8048434 <_IO_stdin_used+4>:    "Hello World\n"
+Examine the variable as a character:
+
+
+(gdb) x/c s
+0x8048434 <_IO_stdin_used+4>:   72 'H'
+Examine the variable as 4 characters:
+
+
+(gdb) x/4c s
+0x8048434 <_IO_stdin_used+4>:   72 'H'  101 'e' 108 'l' 108 'l'
+Examine the first 32 bits of the variable:
+
+
+(gdb) x/t s
+0x8048434 <_IO_stdin_used+4>:   01101100011011000110010101001000
+Examine the first 24 bytes of the variable in hex:
+
+
+(gdb) x/3x s
+0x8048434 <_IO_stdin_used+4>:   0x6c6c6548      0x6f57206f      0x0a646c72
+```
+|       |  ||
+| ----------- | ---| ---|
+|`info registers`| To print what is in the processor registers | |
+
+<br>
+
+### Assembly
+
+| Command      | Example use case|
+| ----------- | --- |
+| `disassemble [MEMORY_ADDRESS]`|(gdb) disassemble main|
+```
+(gdb) disassemble main
+Dump of assembler code for function main:
+0x80483c0 <main>:       push   %ebp
+0x80483c1 <main+1>:     mov    %esp,%ebp
+0x80483c3 <main+3>:     sub    $0x18,%esp
+0x80483c6 <main+6>:     movl   $0x0,0xfffffffc(%ebp)
+0x80483cd <main+13>:    mov    0xfffffffc(%ebp),%eax
+0x80483d0 <main+16>:    movb   $0x7,(%eax)
+0x80483d3 <main+19>:    xor    %eax,%eax
+0x80483d5 <main+21>:    jmp    0x80483d7 <main+23>
+0x80483d7 <main+23>:    leave  
+0x80483d8 <main+24>:    ret    
+End of assembler dump.
+```
+| Command      | Example use case|
+| ----------- | --- |
+| `nexti`|Step over code at the instruction level|
+|`stepi`| Step into function
