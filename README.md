@@ -176,7 +176,7 @@ sudo teamviewer info
 | `list` | list | | 
 |`quit` | Ctrl-d |  exit GDB |
 |`esc key + arrows`| | Switch to the code pane and navigate in the code panel |
-| `i key` | | Switch to the (gdb) command pane |
+| `i key + pg_up / pg_down` | | Switch to the (gdb) command pane |
 | `help` || Lists all commands|
 
 <br>
