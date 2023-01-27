@@ -158,14 +158,24 @@ sudo teamviewer info
 
 2. Run:
     ```
-    cgdb [PROGRAM_NAME] arg1 "arg2" ...
+    cgdb --args [PROGRAM_NAME] arg1 "arg2" ...
 
     OR
 
-    gdb [PROGRAM_NAME] arg1 "arg2" ...
+    gdb --args [PROGRAM_NAME] arg1 "arg2" ...
     ```
 
 ### **GDB/CGDB Cheatsheet:**
+
+Code pane navigation:
+- press "ESC key" to switch to code pane
+- press "arrows / 'j','k'" to navigate the pane
+- press 't' to set breakpoint on the line you are on
+- press 'o' to see all the files that you've compiled, hit 'ENTER' to select the file
+- press 'SPACE' to create a breakpoint and 'SPACE' again to delete the breakpoint
+
+<br>
+
 ### Basic Controls:
 
 | Command      | Shortcut (if any) |Description |
@@ -175,9 +185,9 @@ sudo teamviewer info
 | `continue` | c | Continue the code from where it is stopped |
 | `list` | list | | 
 |`quit` | Ctrl-d |  exit GDB |
-|`esc key + arrows`| | Switch to the code pane and navigate in the code panel |
+|`esc key + (arrows OR 'j','k')`| | Switch to the code pane and navigate in the code panel |
 | `i key + pg_up / pg_down` | | Switch to the (gdb) command pane |
-| `help` || Lists all commands|
+| `help` |`h`| Lists all commands|
 
 <br>
 
@@ -188,18 +198,20 @@ sudo teamviewer info
 | `break [LINE_NUMBER]` | `b ` |  Breakpoint at line # if there is only 1 file|
 | `step ` | `s` | Step into function|
 | `next`| `n` | Next, step over line by line|
-| `finish` || Have a function  finish executing and return to is's caller. Also shows what value the function returned. |
-| `print [VARIABLE]` | | Check variable values. The $## is simply a counter that keeps track of the variables you have examined|
-| `print [VARIABLE].[TAB_KEY]` | |to see the fields possible under the object.|
+| `finish` |`fini`| Have a function  finish executing and return to is's caller. Also shows what value the function returned. |
+| `print [VARIABLE]` | `p` | Check variable values. The $## is simply a counter that keeps track of the variables you have examined|
+| `print [VARIABLE].[TAB_KEY]` | `p` |to see the fields possible under the object.|
 | `set [ASSIGNMENT]` or `set var [ASSIGNMENT]` | |To set a certain variable to something Example: x = 3 |
 |`call [FUNCTION]()` | |for example, you might want to have the program to dump core: you call abort()|
+|`printf [STRING], [ARGS]` | |Allows you to print right away|
+
 
 <br>
 
 ### Stacktracing:
 | Command      | Shortcut (if any) |Description |
 | ----------- | ----------- | --- |
-| `backtrace` || Print out the frames: |
+| `backtrace` |`bt`| Print out the frames: |
     ```
     (gdb) backtrace
     #0  func2 (x=30) at test.c:5
@@ -217,14 +229,16 @@ In this example, we can see that we are currently inside func2(), which was call
 ```
 |       |  | |
 | ----------- | ----------- | --- |
-|`frame [FRAME_ID]`|| Print out ther current frame(?) unsure how to use it
-|`info frame`|| Displays informstion about the current stack frame.|
-| `info locals` | | Displays the list of local variables and their values for the current stack frame|
+|`frame [FRAME_ID]`|`f`| Print out ther current frame(?) unsure how to use it
+|`info frame`|`i f`| Displays informstion about the current stack frame.|
+| `info locals` | `i lo` | Displays the list of local variables and their values for the current stack frame|
 | `info args` | | Displays the list of arguments|
 
 <br>
 
 ### Breakpointing:
+Another tip for breakpointing is that you could navigate into the code plane of GDB (using ESC key) and press t to create a temporary breakpoint there.
+
 | Command      | Shortcut (if any) |Description |
 | ----------- | ----------- | --- |
 | `break [LINE_NUMBER]` | `b ` |  Breakpoint at line # if there is only 1 file|
@@ -232,7 +246,7 @@ In this example, we can see that we are currently inside func2(), which was call
 |`break [FUNCTION_NAME]`| `b` | Breakpoint on a C function|
 |`break TestClass::testFunc(int)`| `b`| Creating breakpoints for C++ functions| 
 | `tbreak` |  | Stops the program only once and is removed|
-| `info breakpoints` || Gives breakpoint info |
+| `info breakpoints` |`i b`| Gives breakpoint info |
 ```
 (gdb) info breakpoints
 Num Type           Disp Enb Address    What
@@ -280,7 +294,7 @@ int main(int argc, char **argv)
 | `info watchpoints`||See a list of all watchpoints that are set|
 |`info breakpoints`| |See list of all breakpoints and watchpoints|
 |`disable`| |To disable the watchpoint|
-|`delete [WATCHPOINT_ID]` || Delete that specific watchpoint|
+|`delete [WATCHPOINT_ID] [WATCHPOINT_ID] [WATCHPOINT_ID] ...` || Delete that specific watchpoint|
 
 <br>
 
