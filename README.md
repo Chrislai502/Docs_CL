@@ -245,6 +245,8 @@ Another tip for breakpointing is that you could navigate into the code plane of 
 |`break [FILENAME]:[LINE_NUMBER]`| `b` | Breakpoint if there are multiple files.|
 |`break [FUNCTION_NAME]`| `b` | Breakpoint on a C function|
 |`break TestClass::testFunc(int)`| `b`| Creating breakpoints for C++ functions| 
+| `break [FUNCTION_NAME] if [CONDITION]` | `b` | Conditional breaks on the function if the condition is fulfulled
+| `condition [BREAKPOINT_ID] [CONDITION]`| `b` | Conditional break same as the above |
 | `tbreak` |  | Stops the program only once and is removed|
 | `info breakpoints` |`i b`| Gives breakpoint info |
 ```
