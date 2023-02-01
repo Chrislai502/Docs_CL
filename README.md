@@ -63,7 +63,7 @@ Setting up SSH access from one machine to another without needing to keep on typ
         HostName [IP_OF_REMOTE_MACHINE]
         User [USERNAME_IN_REMOTE]
         PreferredAuthentications publickey
-        IdentityFile "~/.ssh/[YOUR_CHOICE]/[NAME_FOR_KEY]"
+        IdentityFile "~/.ssh/[YOUR_CHOICE]/[NAME_FOR_PUB_KEY].pub"
     ```
 Now, you should be able to ssh into the machine without having to type the password every single time.
 
