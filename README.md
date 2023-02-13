@@ -7,7 +7,7 @@ Creating a documentation for all the tools I've used across different platforms
 ---
 
 
-## Github
+## Github SSH Push/Clone
 SSH access setup for your local repository. Reference link [here](https://medium.com/hackernoon/step-by-step-guide-to-push-your-first-project-on-github-fec1dce574f)
 
 
@@ -38,7 +38,7 @@ If you run into issues like `ERROR: Permission to [GITHUB_USERNAME]/[GITHUB_REPO
 
 ---
 
-## SSH Setup
+## Machine Access SSH Setup
 Setting up SSH access from one machine to another without needing to keep on typing passwords. Say your own machine is 'local', and the remote machine is 'remote'
 
 1. In your local machine, create a folder within `~./ssh/[YOUR_CHOICE]` and cd into it. Then, run:
