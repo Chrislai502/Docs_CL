@@ -10,7 +10,7 @@ Creating a documentation for all the tools I've used across different platforms
 <br>
 
 # Github
-### Github usage commands and guide
+## Github usage commands and guide
 > **To rename any branch**
 ```
 git branch -M old-branch-name new-branch-name
@@ -125,7 +125,7 @@ This is what happens under the hood:
 
 ---
 
-## Ubuntu Operating System
+# Ubuntu Operating System
 - To check if a package is installed,
 ```
 dpkg -l [Package Name]
@@ -136,7 +136,7 @@ dpkg -l [Package Name]
 
 
 
-## Youtube DL
+# Youtube DL
 YoutubeDL main hub [here](https://github.com/ytdl-org/youtube-dl)
 ChatGPT inquiry link [here](https://chat.openai.com/chat/5eb88024-7e28-4815-9333-a6831b68bf8c)
 - The tool is hidden path is `/home/chris/.youtube-dl`
@@ -151,7 +151,7 @@ ChatGPT inquiry link [here](https://chat.openai.com/chat/5eb88024-7e28-4815-9333
 
 
 
-## TeamViewer
+# TeamViewer
 - If TeamViewer is not working, SSH into computer. 
 ```
 sudo teamviewer --daemon stop
@@ -191,13 +191,13 @@ sudo teamviewer info
 	sudo kill -9 process_ID
     ```
 
-	### The difference:
+	## The difference:
 	kill -9 sends a signal called SIGKILL to the process with the specified process ID, which immediately terminates the process. pkill -u is used to kill all processes running under a specific user with the specified process ID. The -9 option is not required when using pkill. Additionally, pkill allows for more flexibility in selecting processes to be terminated, such as by name, terminal, or other criteria.
 
 ---
 
 
-## CGDB
+# CGDB
 1. First step, if you're using `make` to build, do:
     ```
     make CFLAGS=-g
@@ -217,7 +217,7 @@ sudo teamviewer info
     gdb --args [PROGRAM_NAME] arg1 "arg2" ...
     ```
 
-### **GDB/CGDB Cheatsheet:**
+## **GDB/CGDB Cheatsheet:**
 
 Code pane navigation:
 - press "ESC key" to switch to code pane
@@ -228,7 +228,7 @@ Code pane navigation:
 
 <br>
 
-### Basic Controls:
+## Basic Controls:
 
 | Command      | Shortcut (if any) |Description |
 | ----------- | ----------- | --- |
@@ -243,7 +243,7 @@ Code pane navigation:
 
 <br>
 
-### Basic Debugging Features:
+## Basic Debugging Features:
 
 | Command      | Shortcut (if any) |Description |
 | ----------- | ----------- | --- |
@@ -260,7 +260,7 @@ Code pane navigation:
 
 <br>
 
-### Stacktracing:
+## Stacktracing:
 | Command      | Shortcut (if any) |Description |
 | ----------- | ----------- | --- |
 | `backtrace` |`bt`| Print out the frames: |
@@ -288,7 +288,7 @@ In this example, we can see that we are currently inside func2(), which was call
 
 <br>
 
-### Breakpointing:
+## Breakpointing:
 Another tip for breakpointing is that you could navigate into the code plane of GDB (using ESC key) and press t to create a temporary breakpoint there.
 
 | Command      | Shortcut (if any) |Description |
@@ -315,7 +315,7 @@ Num Type           Disp Enb Address    What
 
 <br>
 
-### Watchpoints:
+## Watchpoints:
 Watchpoint are set on variables. When those variables are read or written, the watchpoint is triggered and the program execution stops.
 
 Important steps:
@@ -352,7 +352,7 @@ int main(int argc, char **argv)
 
 <br>
 
-### Examining Memory
+## Examining Memory
 | Command      | Description |Example use|
 | ----------- | ---| ---|
 | `x/[FMT] [ADDRESS]`|Here, FMT is a count followed by a format letter and size letter. There are many options, use `help x` to see all. [ADDRESS] can be a symbol name, s.a. variable or memory address||
@@ -391,7 +391,7 @@ Examine the first 24 bytes of the variable in hex:
 
 <br>
 
-### Assembly
+## Assembly
 
 | Command      | Example use case|
 | ----------- | --- |
