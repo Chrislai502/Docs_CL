@@ -11,7 +11,7 @@ Creating a documentation for all the tools I've used across different platforms
 ## Github
 
 ### Github usage commands and guide
-- To rename any branch:
+> To rename any branch:
     ```
     git branch -M old-branch-name new-branch-name
 
@@ -19,6 +19,24 @@ Creating a documentation for all the tools I've used across different platforms
 
     git branch -M new_branch_name 
     ```
+
+> Merge Conflict on Git
+>> If you have pushed something and realized there's conflicts, you can do merging by following these steps:  
+>> Fetch remote changes 
+>> ``` 
+>> git fetch
+>> ```
+>> This will merge the changes drom the remote [BRANCH] to your local [BRANCH] , eg. 'main'
+>>```
+>> git merge [REMOTE_NAME]/[BRANCH] 
+>>```
+>>Resolve conflicts in the file. You can check which ones are the >>unmerged files using `git status`.  
+>>After you are done resolving conflicts, do:
+>>``` 
+>>git add -A 
+>>git commit -m "conflich resolution"
+>>git push
+>>```
 
 
 
