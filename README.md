@@ -7,6 +7,7 @@ Creating a documentation for all the tools I've used across different platforms
 ---
 
 
+
 ## Github
 
 ### Github usage commands and guide
@@ -21,8 +22,8 @@ Creating a documentation for all the tools I've used across different platforms
 
 
 
-### SSH access setup for your local repository. 
-Reference link [here](https://medium.com/hackernoon/step-by-step-guide-to-push-your-first-project-on-github-fec1dce574f)
+## Github SSH Push/Clone
+SSH access setup for your local repository. Reference link [here](https://medium.com/hackernoon/step-by-step-guide-to-push-your-first-project-on-github-fec1dce574f)
 
 
 1. IMPORTANT: After running the line of code below, you don't use the default "home/roar/.ssh/id_rsa". Use your name as a path_id to prevent others from overwriting eg.: "home/roar/.ssh/chris_id_rsa"
@@ -70,7 +71,7 @@ Note: `git config` - defaults to making changes locally(`--local`) unless otherw
 
 ---
 
-## SSH Setup
+## Machine Access SSH Setup
 Setting up SSH access from one machine to another without needing to keep on typing passwords. Say your own machine is 'local', and the remote machine is 'remote'
 
 1. In your local machine, create a folder within `~./ssh/[YOUR_CHOICE]` and cd into it. Then, run:
@@ -95,7 +96,7 @@ Setting up SSH access from one machine to another without needing to keep on typ
         HostName [IP_OF_REMOTE_MACHINE]
         User [USERNAME_IN_REMOTE]
         PreferredAuthentications publickey
-        IdentityFile "~/.ssh/[YOUR_CHOICE]/[NAME_FOR_KEY]"
+        IdentityFile "~/.ssh/[YOUR_CHOICE]/[NAME_FOR_PUB_KEY].pub"
     ```
 Now, you should be able to ssh into the machine without having to type the password every single time.
 
