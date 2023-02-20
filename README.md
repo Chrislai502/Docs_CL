@@ -6,39 +6,40 @@ Creating a documentation for all the tools I've used across different platforms
 
 ---
 
+<br>
+<br>
 
-
-## Github
-
+# Github
 ### Github usage commands and guide
-> To rename any branch:
-    ```
-    git branch -M old-branch-name new-branch-name
+> **To rename any branch**
+```
+git branch -M old-branch-name new-branch-name
 
-    OR JUST
+OR JUST
 
-    git branch -M new_branch_name 
-    ```
+git branch -M new_branch_name 
+```
 
-> Merge Conflict on Git
->> If you have pushed something and realized there's conflicts, you can do merging by following these steps:  
->> Fetch remote changes 
->> ``` 
->> git fetch
->> ```
->> This will merge the changes drom the remote [BRANCH] to your local [BRANCH] , eg. 'main'
->>```
->> git merge [REMOTE_NAME]/[BRANCH] 
->>```
->>Resolve conflicts in the file. You can check which ones are the >>unmerged files using `git status`.  
->>After you are done resolving conflicts, do:
->>``` 
->>git add -A 
->>git commit -m "conflich resolution"
->>git push
->>```
+> **Merging Conflict on Git**
 
+If you have pushed something and realized there's conflicts, you can do merging by following these steps:  
+ Fetch remote changes 
+ ``` 
+ git fetch
+ ```
+ This will merge the changes drom the remote [BRANCH] to your local [BRANCH] , eg. 'main'
+```
+ git merge [REMOTE_NAME]/[BRANCH] 
+```
+Resolve conflicts in the file. You can check which ones are the unmerged files using `git status`.  
+After you are done resolving conflicts, do:
+``` 
+git add -A 
+git commit -m "conflict resolution"
+git push
+```
 
+---
 
 ## Github SSH Push/Clone
 SSH access setup for your local repository. Reference link [here](https://medium.com/hackernoon/step-by-step-guide-to-push-your-first-project-on-github-fec1dce574f)
