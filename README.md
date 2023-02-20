@@ -8,11 +8,29 @@ Creating a documentation for all the tools I've used across different platforms
 
 
 ## Github
-SSH access setup for your local repository. Reference link [here](https://medium.com/hackernoon/step-by-step-guide-to-push-your-first-project-on-github-fec1dce574f)
+
+### Github usage commands and guide
+- To rename any branch:
+    ```
+    git branch -M old-branch-name new-branch-name
+
+    OR JUST
+
+    git branch -M new_branch_name 
+    ```
+
+
+
+### SSH access setup for your local repository. 
+Reference link [here](https://medium.com/hackernoon/step-by-step-guide-to-push-your-first-project-on-github-fec1dce574f)
 
 
 1. IMPORTANT: After running the line of code below, you don't use the default "home/roar/.ssh/id_rsa". Use your name as a path_id to prevent others from overwriting eg.: "home/roar/.ssh/chris_id_rsa"
     ```
+    ssh-keygen -t rsa
+
+    OR
+
     ssh-keygen -t rsa -b 4096 -C "[YOUR EMAIL]"
     ```
 2. Start a new instance of the ssh-agent program and set the apporpriate environment variables for the current shell session. "-s " option is to run it in "silent" mode, which causes it to print the commands needed to set the environment variables to standard output, rather than executing them directly. The `eval` command runs the commands printed by the ssh-agent.  
@@ -35,6 +53,20 @@ SSH access setup for your local repository. Reference link [here](https://medium
     ```
 
 If you run into issues like `ERROR: Permission to [GITHUB_USERNAME]/[GITHUB_REPO].git denied to [NOT YOU].`, redo steps 2 - 5 in your local github repository terminal shell
+
+**IMPORTANT **** To bind this SSH Key to your Local github repository, run this line of code after `cd`-ing into your local repository:**
+```
+git config core.sshCommand "ssh -i /path/to/private/key"
+
+ALSO DO
+
+git config user.name [GITHUB_USERNAME]
+git config user.email [GITHUB_EMAIL]
+```
+Note: `git config` - defaults to making changes locally(`--local`) unless otherwise specified with `--global` or `--system`. 'System' option configures Git across all users in a machine.
+
+
+
 
 ---
 
