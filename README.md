@@ -46,13 +46,26 @@ git push
 
 ## 3-way merge
 
-![before-3-way-merge.png](before-3-way-merge.png)
-
-```
+![before-3-way-merge.png](before-3-way-merge.svg)
 1. Checkout the branch that you want to merge into
 2. Run 'git merge [FEATURE_BRANCH_NAME]'
-  $ git merge
-```
+    ```
+    $ git merge [FEATURE_BRANCH_NAME]
+    $ git push
+    ```
+3. Cleanup the local and then remote:
+    ```
+    # Delete branch
+    $ git branch -d new-feature
+
+    # Delete the remote feature branch
+    $ git push origin --delete feature
+    ```
+
+
+<br>
+<br>
+
 ---
 
 ## Github SSH Push/Clone
