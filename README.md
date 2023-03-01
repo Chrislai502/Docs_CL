@@ -42,11 +42,10 @@ git push
 <br>
 <br>
 
-> **Regular Git Merging**
+## Regular Git Merging
+### 3-way merge
 
-## 3-way merge
-
-![before-3-way-merge.png](before-3-way-merge.svg)
+![3-way-merge.png](3-way-merge.svg)
 1. Checkout the branch that you want to merge into
 2. Run 'git merge [FEATURE_BRANCH_NAME]'
     ```
@@ -65,6 +64,9 @@ git push
 
 <br>
 <br>
+
+### Fast Forward merging
+![fastforward-merge.png](fast-forward-merge.svg)
 
 ---
 
