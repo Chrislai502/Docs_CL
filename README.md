@@ -44,7 +44,6 @@ git push
 
 ## Regular Git Merging
 ### 3-way merge
-
 ![3-way-merge.png](3-way-merge.svg)
 
 1. Checkout the branch that you want to merge into, say we are merging into `main`
@@ -76,6 +75,18 @@ git push
 
 ### Fast Forward merging
 ![fastforward-merge.png](fast-forward-merge.svg)
+The steps of fast-forward merging is actually identical, just another scenario where it automatically fast-forward merges. The situation where this happens is described as below:
+
+1. A new branch is created in the tip of the main, and a bunch of commits is bring done on that branch.
+2. In the situation that the main has no new commits, and `git merge` is being done, fast-forward is the default for this situation
+
+n the event that you require a merge commit during a fast forward merge for record keeping purposes you can execute git merge with the --no-ffoption.
+```
+git merge --no-ff [BRANCH]
+```
+
+<br>
+<br>
 
 
 ---
