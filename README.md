@@ -45,23 +45,7 @@ git push
 ## Regular Git Merging
 ### 3-way merge
 
-<div class="image-grid">
-  <img src="3-way-merge.svg" />
-  <img src="3-way-merge.svg" />
-</div>
-
-<!-- <p float="left">
-  <img src="3-way-merge.svg" width="250" />
-  <img src="3-way-merge.svg" width="250" />
-</p>
-
-<table>
-  <tr>
-    <td><img src="3-way-merge.svg"></td>
-    <td><img src="fast-forward-merge.svg"></td>
-  </tr>
-</table>
-![3-way-merge.png](3-way-merge.svg) -->
+![3-way-merge.png](3-way-merge.svg)
 
 1. Checkout the branch that you want to merge into, say we are merging into `main`
     ```
@@ -91,7 +75,7 @@ git push
 <br>
 
 ### Fast Forward merging
-<!-- ![fastforward-merge.png](fast-forward-merge.svg) -->
+![fastforward-merge.png](fast-forward-merge.svg)
 
 
 ---
