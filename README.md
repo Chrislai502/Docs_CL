@@ -88,6 +88,34 @@ git merge --no-ff [BRANCH]
 <br>
 <br>
 
+## Git Cherry Picking
+Cherry Picking is if you want to pick a specific commit and apply **Just the changes that occured in that specific commit**, without the changes before or after the commit, you do cherry picking. (Like picking a cherry off the git tree)
+
+1. Find the commit that you want to cherry pick
+    ```
+    git log --oneline
+    ```
+2. Start the cherry picking process
+    ```
+    git cherry-pick abc123
+    ```
+    - If there are conflicts, merge them. Refer to **Merging Conflict on Git** section
+    - After the conflicts are resolved and commited, run
+    ```
+    git cherry-pick --continue
+    ```
+3. If the cherry picking is done without any conflicts, you might see: 'The previous cherry-pick is now empty, possibly due to conflict resolution.'
+You can choose whether or not you want to include this empty commit. In practice, an empty commit like this can indicate a cherry-picking happened here.
+    ```
+    # Not include the empty commit:
+    git cherry-pick --skip
+
+    # Include the empty commit:
+    git commit --allow-empty
+    git cherry-pick --continue
+    ```
+4. Check git status, push if you desire remote to reflect changes.
+
 
 ---
 
