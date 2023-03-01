@@ -39,6 +39,20 @@ git commit -m "conflict resolution"
 git push
 ```
 
+<br>
+<br>
+
+> **Regular Git Merging**
+
+## 3-way merge
+
+![before-3-way-merge.png](before-3-way-merge.png)
+
+```
+1. Checkout the branch that you want to merge into
+2. Run 'git merge [FEATURE_BRANCH_NAME]'
+  $ git merge
+```
 ---
 
 ## Github SSH Push/Clone
