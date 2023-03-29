@@ -509,6 +509,7 @@ ros2 topic info -v /radar_front/esr
 ```
 Get more node info 
 ```
+
 ros2 node list
 ros2 node info "node from ros2 node list"
 ```
@@ -519,3 +520,12 @@ Before you can do it,
 ```
 source /usr/share/colcon_cd/function/colcon_cd.sh
 ```
+Use 
+```
+ros2 pkg list
+```
+To see the list of packages, then use
+```
+colcon_cd <package_name> 
+```
+to cd into the package
