@@ -493,3 +493,29 @@ End of assembler dump.
 | ----------- | --- |
 | `nexti`|Step over code at the instruction level|
 |`stepi`| Step into function
+
+<br>
+<br>
+
+# ROS2
+## ROS2 navigation usage commands and guide
+
+To display the 
+- Node name
+- Node namespace
+- Topic Type
+```
+ros2 topic info -v /radar_front/esr
+```
+Get more node info 
+```
+ros2 node list
+ros2 node info "node from ros2 node list"
+```
+## Colcon cd
+Somewhat like ros2 cd, but sid uses it, have a look.
+Uses: cd straight into a package given the 
+Before you can do it, 
+```
+source /usr/share/colcon_cd/function/colcon_cd.sh
+```
