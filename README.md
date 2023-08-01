@@ -529,3 +529,38 @@ To see the list of packages, then use
 colcon_cd <package_name> 
 ```
 to cd into the package
+
+# Docker
+## Start Docker Image:
+sudo make rocker-cpu-nvidia IMG_NAME=art_race_common_cu116_galactic CONT_NAME=art_gpu_cu116_test
+
+## Create another Docker Image Terminal:
+sudo docker ps
+sudo make join-session CONT_NAME=art_gpu_cu116_test
+
+## Launching the Docker
+make rocker-cpu-nvidia IMG_NAME=art_ros_gpu_cu116_cpu:chris_version CONT_NAME=test MOUNT_PATH=/home/zhihao/rosbags/
+
+
+## Creating a ROS Metapackage, Calibration Tools as an Example
+ros2 pkg create --package-format 3 --description "Metapackage for CalibrationTools sensor folder" --license "GPL-3.0" --build-type ament_cmake --maintainer-email "sisahawork@gmail.com" --maintainer-name "Siddharth Saha" calibration_tools_sensor --dependencies extrinsic_calibration_client extrinsic_calibration_manager extrinsic_dummy_calibrator extrinsic_ground_plane_calibrator extrinsic_interactive_calibrator extrinsic_lidar_to_lidar_2d_calibrator extrinsic_manual_calibrator extrinsic_map_based_calibrator extrinsic_tag_based_calibrator intrinsic_camera_calibration intrinsic_camera_calibrator point_cloud_accumulator
+
+# Importing VCS directories
+vcs import src < calibration_tools.repos
+
+# Rosdep install
+rosdep install --from-paths src/ --ignore-src -y -r
+
+# Sid's build command
+colcon build --cmake-args DCMAKE_BUILD_TYPE=Release --packages-up-to calibration_tools_sensor
+
+# Change USB Ownership
+chown -R zhihao:zhihao blah blah
+
+aws s3 cp s3://ai-racing-tech-data/bags/rosbag2_2022_09_21-12_58_49_0/rosbag2_2022_09_21-12_58_49_0.db3
+
+ros2 launch extrinsic_calibration_manager calibration.launch.xml mode:=map_based sensor_model:=aip_xx1 vehicle_model:=jpntaxi map_path:=$HOME/map pointcloud_map_file:=0.20_map_clean.pcd lanelet2_map_file:=r1.osm
+
+
+## Creating another package that depends on the other packages, then use --build-up-to to build up to a certain package that you think you want. 
+ros2 pkg create --package-format 3 --description "Metapackage for CalibrationTools sensor folder" --license "GPL-3.0" --build-type ament_cmake --maintainer-email "sisahawork@gmail.com" --maintainer-name "Siddharth Saha" calibration_tools_sensor --dependencies extrinsic_calibration_client extrinsic_calibration_manager extrinsic_dummy_calibrator extrinsic_ground_plane_calibrator extrinsic_interactive_calibrator extrinsic_lidar_to_lidar_2d_calibrator extrinsic_manual_calibrator extrinsic_map_based_calibrator extrinsic_tag_based_calibrator intrinsic_camera_calibration intrinsic_camera_calibrator point_cloud_accumulator
