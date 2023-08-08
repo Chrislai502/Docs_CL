@@ -564,3 +564,13 @@ ros2 launch extrinsic_calibration_manager calibration.launch.xml mode:=map_based
 
 ## Creating another package that depends on the other packages, then use --build-up-to to build up to a certain package that you think you want. 
 ros2 pkg create --package-format 3 --description "Metapackage for CalibrationTools sensor folder" --license "GPL-3.0" --build-type ament_cmake --maintainer-email "sisahawork@gmail.com" --maintainer-name "Siddharth Saha" calibration_tools_sensor --dependencies extrinsic_calibration_client extrinsic_calibration_manager extrinsic_dummy_calibrator extrinsic_ground_plane_calibrator extrinsic_interactive_calibrator extrinsic_lidar_to_lidar_2d_calibrator extrinsic_manual_calibrator extrinsic_map_based_calibrator extrinsic_tag_based_calibrator intrinsic_camera_calibration intrinsic_camera_calibrator point_cloud_accumulator
+
+## .bashrc
+```
+# History Persistence
+shopt -s histappend # enabling HISTORY
+HISTSIZE=30000
+HISTFILESIZE=30000
+HISTCONTROL=ignoreboth:erasedups # Erase duplicates
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+```
