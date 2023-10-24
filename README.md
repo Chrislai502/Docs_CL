@@ -215,9 +215,9 @@ dpkg -l [Package Name]
 
 
 # Youtube DL
-YoutubeDL main hub [here](https://github.com/ytdl-org/youtube-dl)
-With fixes, [Youtube DLP here](https://github.com/yt-dlp/yt-dlp)
-ChatGPT inquiry link [here](https://chat.openai.com/chat/5eb88024-7e28-4815-9333-a6831b68bf8c)
+YoutubeDL main hub [here](https://github.com/ytdl-org/youtube-dl)  
+With fixes, [Youtube DLP here](https://github.com/yt-dlp/yt-dlp)  
+ChatGPT inquiry link [here](https://chat.openai.com/chat/5eb88024-7e28-4815-9333-a6831b68bf8c)  
 - The tool is hidden path is `/home/chris/.youtube-dl`
 - Use download.sh to install a list of files in url.txt (newline separated urls)
 ```
