@@ -125,6 +125,10 @@ SSH access setup for your local repository. Reference link [here](https://medium
 
 1. IMPORTANT: After running the line of code below, you don't use the default "home/roar/.ssh/id_rsa". Use your name as a path_id to prevent others from overwriting eg.: "home/roar/.ssh/chris_id_rsa"
     ```
+    ssh-keygen -t ed25519
+
+    OR
+    
     ssh-keygen -t rsa
 
     OR
